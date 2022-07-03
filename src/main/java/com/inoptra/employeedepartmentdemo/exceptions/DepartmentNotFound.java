@@ -5,5 +5,8 @@ package com.inoptra.employeedepartmentdemo.exceptions;
  * @Description:
  * Represents business exception thrown when department not found in the context
  **/
-public class DepartmentNotFound {
+public class DepartmentNotFound extends RuntimeException{
+    public DepartmentNotFound(Long id){
+        super("Could not find department " + id);
+    }
 }

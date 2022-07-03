@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+//TODO: Using @Builder but need to do some workaround to make JPA happy.
 public class Department {
 
 	@Id
@@ -26,7 +28,7 @@ public class Department {
 	@OneToMany(mappedBy = "department", fetch = FetchType.EAGER, //TODO: fix JSON failed to lazily init a collection.
 	cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
-	private List<Employee> employees;
+	private List<Employee> employees = new ArrayList<>();
 
 	public void addEmployee(Employee employee){
 		employees.add(employee);

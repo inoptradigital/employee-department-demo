@@ -25,6 +25,11 @@ public class SalaryComponent {
 
 	private double factor;
 
+	public SalaryComponent(String name, double factor){
+		this.name = name;
+		this.factor = factor;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonBackReference
 	private Salary salary;

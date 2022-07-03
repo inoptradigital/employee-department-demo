@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+//TODO: Using @Builder but need to do some workaround to make JPA happy.
 public class Employee {
 
 	@Id

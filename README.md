@@ -60,3 +60,6 @@ _mvn clean install_
 _mvn clean test_
 
 ----
+
+## URLs
+1. http://localhost:8080/h2-console

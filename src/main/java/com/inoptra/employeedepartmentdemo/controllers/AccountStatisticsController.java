@@ -1,5 +1,8 @@
 package com.inoptra.employeedepartmentdemo.controllers;
 
+import com.inoptra.employeedepartmentdemo.services.DepartmentService;
+import com.inoptra.employeedepartmentdemo.services.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,6 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/account/accountstats")
 public class AccountStatisticsController {
+
+	@Autowired
+	private DepartmentService departmentService;
+
+	@Autowired
+	private EmployeeService employeeService;
+
 	@GetMapping("/all/total")
 	public double getTotalSalaryForAllDepartments() {
 		return 0.0;

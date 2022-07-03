@@ -33,3 +33,6 @@ build/
 .vscode/
 .codetogether.ignore
 .project
+
+#database file
+*.db

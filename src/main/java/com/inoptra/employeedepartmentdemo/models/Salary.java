@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /* @Author: Shrikrishna Prabhumirashi
@@ -27,9 +28,19 @@ public class Salary {
 	@OneToMany(mappedBy = "salary", fetch = FetchType.EAGER, //TODO: fix JSON failed to lazily init a collection.
 			cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
-	private List<SalaryComponent> salaryComponents;
+	private List<SalaryComponent> salaryComponents = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee employee;
+
+	public void addSalaryComponent(SalaryComponent salaryComponent){
+		salaryComponents.add(salaryComponent);
+		salaryComponent.setSalary(this);
+	}
+
+	public void removeSalaryComponent(SalaryComponent salaryComponent){
+		salaryComponents.remove(salaryComponent);
+		salaryComponent.setSalary(null);
+	}
 
 }
