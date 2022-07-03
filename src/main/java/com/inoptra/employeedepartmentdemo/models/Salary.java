@@ -1,5 +1,10 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.List;
 
 /* @Author: Shrikrishna Prabhumirashi
@@ -8,21 +13,23 @@ import java.util.List;
  *  i.e. SalaryComponent_amount = baseSalary * factor;
  *  Actual salary can be calculated as sum of all SalaryComponent amounts.
  * */
+@Entity
+@Getter
+@Setter
 public class Salary {
-	private double baseSalary;
-	private List<SalaryComponent> salaryComonents;
 
-	public double getBaseSalary() {
-		return baseSalary;
-	}
-	public void setBaseSalary(double baseSalary) {
-		this.baseSalary = baseSalary;
-	}
-	public List<SalaryComponent> getSalaryComonents() {
-		return salaryComonents;
-	}
-	public void setSalaryComonents(List<SalaryComponent> salaryComonents) {
-		this.salaryComonents = salaryComonents;
-	}
-	
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	private double baseSalary;
+
+	@OneToMany(mappedBy = "salary", fetch = FetchType.EAGER, //TODO: fix JSON failed to lazily init a collection.
+			cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
+	private List<SalaryComponent> salaryComponents;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Employee employee;
+
 }

@@ -31,7 +31,7 @@ public class EmployeeService {
 		
 		return emp
 				.getSalary()
-				.getSalaryComonents()
+				.getSalaryComponents()
 				.parallelStream()
 				.reduce(
 					Double.valueOf(0.0), 
