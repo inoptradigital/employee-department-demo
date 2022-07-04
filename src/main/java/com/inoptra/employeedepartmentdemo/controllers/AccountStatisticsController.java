@@ -28,7 +28,7 @@ public class AccountStatisticsController {
 
 	@GetMapping("/all/total")
 	public double getTotalSalaryForAllDepartments() {
-		return 0.0;
+		return employeeService.getTotalSalaryForAllDepartments();
 	}
 	
 	@GetMapping("/{deptId}/total")
