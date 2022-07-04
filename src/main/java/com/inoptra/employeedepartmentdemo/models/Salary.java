@@ -1,5 +1,6 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,12 +26,19 @@ public class Salary {
 
 	private double baseSalary;
 
+	protected Salary(){}
+
+	public Salary(double baseSalary){
+		this.baseSalary = baseSalary;
+	}
+
 	@OneToMany(mappedBy = "salary", fetch = FetchType.EAGER, //TODO: fix JSON failed to lazily init a collection.
 			cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<SalaryComponent> salaryComponents = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
 	private Employee employee;
 
 	public void addSalaryComponent(SalaryComponent salaryComponent){

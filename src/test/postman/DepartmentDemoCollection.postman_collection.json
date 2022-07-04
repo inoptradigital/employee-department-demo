@@ -169,6 +169,94 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GET accountstats total by deptId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/accountstats/1/total",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"accountstats",
+						"1",
+						"total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET accountstats all total",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/accountstats/all/total",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"accountstats",
+						"all",
+						"total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET accountstats all avg",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/accountstats/all/avg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"accountstats",
+						"all",
+						"avg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET accountstats avg by deptId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/accountstats/1/avg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"accountstats",
+						"1",
+						"avg"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

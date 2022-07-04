@@ -25,6 +25,8 @@ public class SalaryComponent {
 
 	private double factor;
 
+	protected SalaryComponent(){}
+
 	public SalaryComponent(String name, double factor){
 		this.name = name;
 		this.factor = factor;

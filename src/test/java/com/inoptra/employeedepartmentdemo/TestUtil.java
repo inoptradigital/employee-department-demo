@@ -10,20 +10,17 @@ public class TestUtil {
 
     public static Department buildDepartment(String name){
         //TODO: Builder would make this look cleaner.
-        Department department = new Department();
-        department.setName(name);
+        Department department = new Department(name);
         return department;
     }
 
     public static Employee buildEmployee(String name){
-        Employee employee = new Employee();
-        employee.setName(name);
+        Employee employee = new Employee(name);
         return employee;
     }
 
     public static Salary buildSalary(double base){
-        Salary salary = new Salary();
-        salary.setBaseSalary(base);
+        Salary salary = new Salary(base);
         return salary;
     }
 

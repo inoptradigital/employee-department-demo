@@ -23,11 +23,17 @@ public class Employee {
 
 	private String name;
 
-	@OneToOne(mappedBy = "employee", fetch = FetchType.LAZY,
+	protected Employee(){};
+
+	public Employee(String name){
+		this.name = name;
+	}
+
+	@OneToOne(mappedBy = "employee", fetch = FetchType.EAGER,
 			cascade = CascadeType.ALL)
 	private Salary salary;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonBackReference
 	private Department department;
 

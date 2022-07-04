@@ -25,6 +25,12 @@ public class Department {
 
 	private String name;
 
+	protected Department(){}
+
+	public Department(String name){
+		this.name = name;
+	}
+
 	@OneToMany(mappedBy = "department", fetch = FetchType.EAGER, //TODO: fix JSON failed to lazily init a collection.
 	cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
