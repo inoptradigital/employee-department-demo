@@ -46,6 +46,20 @@ public class EmployeeService {
 		return total;
 	}
 
+	public double getAverageSalaryForAllDepartments(){
+		List<Employee> employees = employeeRepository.findAll();
+		if(employees.size()<1) return 0.0;
+
+		double total = employees
+				.stream()
+				.map(emp -> this.calculateSalary(emp))
+				.mapToDouble(Double::doubleValue)
+				.average()
+				.getAsDouble();
+
+		return total;
+	}
+
 	private double calculateSalary(Employee emp){
 		return emp
 				.getSalary()

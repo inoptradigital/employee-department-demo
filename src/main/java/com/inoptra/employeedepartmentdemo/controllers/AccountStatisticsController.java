@@ -38,7 +38,7 @@ public class AccountStatisticsController {
 	
 	@GetMapping("/all/avg")
 	public double getAverageSalaryForAllDepartments() {
-		return 0.0;
+		return employeeService.getAverageSalaryForAllDepartments();
 	}
 	
 	@GetMapping("/{deptId}/avg")
