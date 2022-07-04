@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.inoptra.employeedepartmentdemo.models.Employee;
 import com.inoptra.employeedepartmentdemo.repositories.EmployeeRepository;
+import org.springframework.stereotype.Service;
 
 /**
  * @Author: Shrikrishna Prabhumirashi
@@ -14,6 +15,7 @@ import com.inoptra.employeedepartmentdemo.repositories.EmployeeRepository;
  * Service layer contract which supports operations on Employee object
  **/
 //TODO: Define Interface for this service to comply with Strategy design pattern.
+@Service
 public class EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
