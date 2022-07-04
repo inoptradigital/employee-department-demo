@@ -3,6 +3,8 @@ package com.inoptra.employeedepartmentdemo.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.inoptra.employeedepartmentdemo.exceptions.DeleteEmployeeException;
+import com.inoptra.employeedepartmentdemo.exceptions.EmployeeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.inoptra.employeedepartmentdemo.models.Employee;
@@ -60,6 +62,23 @@ public class EmployeeService {
 				.getAsDouble();
 
 		return total;
+	}
+
+	public Employee getEmployeeById(Long id){
+		return employeeRepository.findById(id).orElseThrow(()-> new EmployeeNotFound(id));
+	}
+
+	public Employee addEmployee(Employee employee){
+		return employeeRepository.save(employee);
+	}
+
+	public Employee updateEmployee(Employee employee){
+		return employeeRepository.save(employee);
+	}
+
+	public void deleteEmployee(Long id){
+		employeeRepository.findById(id).orElseThrow(() -> new DeleteEmployeeException(id, new Exception("This employee does not exist to delete.")));
+		employeeRepository.deleteById(id);
 	}
 
 	private double calculateSalary(Employee emp){

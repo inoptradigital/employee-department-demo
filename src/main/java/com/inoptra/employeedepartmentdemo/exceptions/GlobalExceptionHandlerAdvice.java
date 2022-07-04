@@ -23,4 +23,9 @@ public class GlobalExceptionHandlerAdvice {
         return ex.getMessage();
     }
 
+    @ResponseBody
+    @ExceptionHandler(DeleteEmployeeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String deleteEmployeeException(DeleteEmployeeException ex) {return ex.getMessage();} //TODO: Fix error message
+
 }
