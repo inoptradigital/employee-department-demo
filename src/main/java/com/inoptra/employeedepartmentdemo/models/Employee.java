@@ -1,50 +1,42 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
 /**
  * @Author: Shrikrishna Prabhumirashi
  * @Description:
  * Represents Employee entity
  **/
+@Entity(name = "employee")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private Long id;
+    @NotNull
+    private String name;
 
-	private String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Salary salary;
 
-	private Salary salary;
-
-	private Department department;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Salary getSalary() {
-		return salary;
-	}
-
-	public void setSalary(Salary salary) {
-		this.salary = salary;
-	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-    
+    @ManyToOne
+    @JsonIgnoreProperties( value = {"employees"})
+    private Department department;
 }
