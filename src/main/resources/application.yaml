@@ -1,12 +1,18 @@
 spring:
   datasource:
-    # url: "jdbc:h2:mem:testdb"   --- in memory
-    url: "jdbc:h2:file:/data/demo"   # file storage
+    url: "jdbc:h2:mem:testdb"   #--- in memory
+    #url: "jdbc:h2:file:./data/demo"   # file storage
     driverClassName: org.h2.Driver
     username: sa
     password:
+  h2:
+    console:
+      path: /h2-console
+      settings.trace: false
+      settings.web-allow-others: false
+      enabled: true
 
 jpa:
   show-sql: true
   hibernate.ddl-auto: update
-  database-platform: org.hibernate.dialect.H2Dialect
+  spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
