@@ -1,5 +1,11 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import lombok.ToString;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 /* @Author: Shrikrishna Prabhumirashi
@@ -8,9 +14,18 @@ import java.util.List;
  *  i.e. SalaryComponent_amount = baseSalary * factor;
  *  Actual salary can be calculated as sum of all SalaryComponent amounts.
  * */
+@Entity
+@Table(name = "salaries")
+@ToString
 public class Salary {
+
+	@Id
+	private Long id;
+
 	private double baseSalary;
-	private List<SalaryComponent> salaryComonents;
+
+	@OneToMany(mappedBy="salary")
+	private List<SalaryComponent> salaryComponents;
 
 	public double getBaseSalary() {
 		return baseSalary;
@@ -18,11 +33,11 @@ public class Salary {
 	public void setBaseSalary(double baseSalary) {
 		this.baseSalary = baseSalary;
 	}
-	public List<SalaryComponent> getSalaryComonents() {
-		return salaryComonents;
+	public List<SalaryComponent> getSalaryComponents() {
+		return salaryComponents;
 	}
-	public void setSalaryComonents(List<SalaryComponent> salaryComonents) {
-		this.salaryComonents = salaryComonents;
+	public void setSalaryComponents(List<SalaryComponent> salaryComponents) {
+		this.salaryComponents = salaryComponents;
 	}
 	
 }

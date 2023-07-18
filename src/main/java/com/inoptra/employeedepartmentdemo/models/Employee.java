@@ -1,18 +1,30 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import lombok.ToString;
+
+import javax.persistence.*;
+
 /**
  * @Author: Shrikrishna Prabhumirashi
  * @Description:
  * Represents Employee entity
  **/
+@Entity
+@Table(name = "employees")
+@ToString
 public class Employee {
 
+	@Id
 	private Long id;
 
 	private String name;
 
+	@OneToOne
+	@JoinColumn(name="salary_id", nullable=false)
 	private Salary salary;
 
+	@ManyToOne
+	@JoinColumn(name="department_id", nullable=false)
 	private Department department;
 
 	public Long getId() {

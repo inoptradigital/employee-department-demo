@@ -1,5 +1,11 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import lombok.ToString;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
@@ -7,12 +13,17 @@ import java.util.List;
  * @Description:
  * Represents {@code Department} entity
  **/
+@Entity
+@Table(name = "departments")
+@ToString
 public class Department {
 
+	@Id
 	private Long id;
 
 	private String name;
 
+	@OneToMany(mappedBy="department")
 	private List<Employee> employees;
 
 	public Long getId() {
