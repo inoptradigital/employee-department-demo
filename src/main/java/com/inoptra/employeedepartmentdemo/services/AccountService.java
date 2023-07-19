@@ -1,5 +1,6 @@
 package com.inoptra.employeedepartmentdemo.services;
 
+import com.inoptra.employeedepartmentdemo.dtos.EmployeeDto;
 import com.inoptra.employeedepartmentdemo.exceptions.DepartmentNotFoundException;
 import com.inoptra.employeedepartmentdemo.models.Department;
 import lombok.extern.slf4j.Slf4j;
@@ -19,10 +20,7 @@ public class AccountService {
     private DepartmentService departmentService;
 
     public double getTotalSalaryForAllDepartments() {
-        final List<Department> departments = departmentService.getAllDepartments();
-
-        return departments.stream()
-                .flatMap(department -> department.getEmployees().stream())
+        return employeeService.getAllEmployees().stream()
                 .map(employee -> employeeService.getSalary(employee.getId()))
                 .reduce(0.0, (t, s) -> t + s);
     }

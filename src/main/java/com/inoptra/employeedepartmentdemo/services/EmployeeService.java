@@ -52,6 +52,11 @@ public class EmployeeService {
 		return (int) employeeRepository.count();
 	}
 
+	public List<EmployeeDto> getAllEmployees() {
+		// TODO(sreejit): make it pageable
+		return employeeDtoMapper.mapEmployeeListToDtoList(employeeRepository.findAll());
+	}
+
 	public List<EmployeeDto> getEmployeesForDepartment(final long deptId) throws DepartmentNotFoundException {
 		return employeeDtoMapper.mapEmployeeListToDtoList(employeeRepository.findByDepartmentId(deptId));
 	}
