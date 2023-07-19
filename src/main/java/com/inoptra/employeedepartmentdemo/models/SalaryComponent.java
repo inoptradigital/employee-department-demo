@@ -1,8 +1,8 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import jakarta.persistence.*;
 import lombok.ToString;
 
-import javax.persistence.*;
 
 /* @Author: Shrikrishna Prabhumirashi
  * @Description:
