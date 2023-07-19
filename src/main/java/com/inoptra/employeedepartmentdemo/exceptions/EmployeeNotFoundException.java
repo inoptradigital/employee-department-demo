@@ -5,5 +5,5 @@ package com.inoptra.employeedepartmentdemo.exceptions;
  * @Description:
  * Represents business exception thrown when employee not found in the context
  **/
-public class EmployeeNotFound {
+public class EmployeeNotFoundException extends Exception {
 }

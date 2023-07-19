@@ -1,7 +1,11 @@
 package com.inoptra.employeedepartmentdemo.controllers;
 
+import com.inoptra.employeedepartmentdemo.services.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
 * @Author: Shrikrishna Prabhumirashi
@@ -15,24 +19,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 **/
 
 @RequestMapping("/account/accountstats")
+@RestController
 public class AccountStatisticsController {
+
+	@Autowired
+	private AccountService accountService;
+
 	@GetMapping("/all/total")
 	public double getTotalSalaryForAllDepartments() {
-		return 0.0;
+
+		return accountService.getTotalSalaryForAllDepartments();
 	}
 	
 	@GetMapping("/{deptId}/total")
-	public double getTotalSalaryForDepartment() {
-		return 0.0;
+	public double getTotalSalaryForDepartment(@PathVariable("deptId") final long deptId) {
+		return accountService.getTotalSalaryForDepartment(deptId);
 	}
 	
 	@GetMapping("/all/avg")
 	public double getAverageSalaryForAllDepartments() {
-		return 0.0;
+		return accountService.getAverageSalaryForAllDepartments();
 	}
 	
 	@GetMapping("/{deptId}/avg")
-	public double getAverageSalaryForDepartment() {
-		return 0.0;	
+	public double getAverageSalaryForDepartment(@PathVariable("deptId") final long deptId) {
+		return accountService.getAverageSalaryForDepartment(deptId);
 	}
 }

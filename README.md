@@ -29,7 +29,7 @@ Actual salary can be calculated as sum of all SalaryComponent amounts.
 ### PRE-REQUISITES
 ---
 Environment setup needed to work on the codebase:
-1. Java 8
+1. Java 17
 2. Git
 3. Maven
 4. Any IDE (IntelliJ / Eclipse / VS Code)
@@ -53,6 +53,13 @@ All required dependencies (ex. spring boot, data jpa, h2, etc) are already added
 **Build**
 
 _mvn clean install_
+
+**Run**
+To run the application use
+_mvn spring-boot:run_
+
+If things go well, you can check the swagger page at: 
+``http://localhost:8080/swagger-ui/index.html``
 
 ---
 **Test**
